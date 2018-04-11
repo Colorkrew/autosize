@@ -84,6 +84,7 @@
 			if (isNaN(heightOffset)) {
 				heightOffset = 0;
 			}
+			$(ta).css("max-height","25px");
 			resize();
 			update();
 		}
@@ -137,14 +138,8 @@
 			}
 
 			ta.style.height = endHeight + 'px';
-
-			if(endHeight > 34){
-				$(ta).css("max-height","none");
-			} else if(endHeight === 34){
-				$(ta).css("max-height","34px");
-			} else if(endHeight <= 25) {
-				$(ta).css("max-height","25px");
-			}
+			// set max-height accordingly so that its not cut-off and does not bounce
+			$(ta).css("max-height", endHeight + "px");
 			// used to check if an update is actually necessary on window.resize
 			clientWidth = ta.clientWidth;
 
